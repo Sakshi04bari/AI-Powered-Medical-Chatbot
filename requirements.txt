@@ -2,6 +2,7 @@ Flask==3.1.2
 gunicorn==23.0.0
 
 python-dotenv==1.2.1
+
 requests==2.32.5
 numpy==1.26.4
 
@@ -16,7 +17,6 @@ langchain-pinecone==0.2.13
 langchain-core
 langchain-community
 langchain-text-splitters
-
 langchain-huggingface
 
 # Hugging Face
@@ -28,10 +28,6 @@ torch
 # Translation
 googletrans==4.0.0rc1
 deep-translator==1.11.4
-
-# HTTP
-aiohttp
-httpx
 
 # Utilities
 PyYAML
