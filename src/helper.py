@@ -1,8 +1,13 @@
 from typing import List
 
+try:
+    from langchain_huggingface import HuggingFaceEmbeddings
+except ImportError:
+    HuggingFaceEmbeddings = None
+
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_core.documents import Document
-from langchain_huggingface import HuggingFaceEmbeddings
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
@@ -55,9 +60,13 @@ def text_split(extracted_data):
     return text_chunks
 
 
-# Download the Embeddings from HuggingFace
-def download_hugging_face_embeddings():
-    embeddings = HuggingFaceEmbeddings(
-        model_name='sentence-transformers/all-MiniLM-L6-v2'
+# Choose embeddings backend
+
+def get_embeddings():
+    if HuggingFaceEmbeddings is None:
+        raise RuntimeError(
+            "Local embedding backend unavailable. Install langchain-huggingface and sentence-transformers."
+        )
+    return HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
-    return embeddings

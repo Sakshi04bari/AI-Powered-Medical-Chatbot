@@ -1,8 +1,6 @@
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 from langdetect import LangDetectException, detect
 import time
-
-translator = Translator()
 
 # Mapping of language codes to display names
 LANGUAGE_MAP = {
@@ -26,15 +24,8 @@ def detect_user_language(text: str, selected_lang: str = 'en') -> str:
         lang = detect(text)
         print("Detected (langdetect):", lang)
         return lang
-    except:
-        print("langdetect failed")
-
-    try:
-        result = translator.detect(text)
-        print("Detected (googletrans):", result.lang)
-        return result.lang
     except Exception as e:
-        print("googletrans detect failed:", e)
+        print("langdetect failed:", e)
         return fallback
 
 
@@ -53,19 +44,16 @@ def translate_text(text: str, target_lang: str = "en", retries: int = 3) -> str:
     if not text or not text.strip():
         return text
     
-    if target_lang == 'en':
-        return text
-    
     for attempt in range(retries):
         try:
-            result = translator.translate(text, dest=target_lang)
-            if result and result.text:
+            translated = GoogleTranslator(source='auto', target=target_lang).translate(text)
+            if translated:
                 print(f"✓ Translation successful to {target_lang} (attempt {attempt + 1})")
-                return result.text
+                return translated
         except Exception as e:
             print(f"❌ Translation attempt {attempt + 1} failed: {e}")
             if attempt < retries - 1:
-                time.sleep(0.5)  # Wait before retry
+                time.sleep(0.5)
     
     print(f"⚠️ Translation failed after {retries} attempts, returning original text")
     return text
