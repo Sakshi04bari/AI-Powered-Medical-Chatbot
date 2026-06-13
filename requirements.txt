@@ -1,17 +1,17 @@
-Flask==3.1.2
-gunicorn==23.0.0
+Flask
+gunicorn
 
-python-dotenv==1.2.1
+python-dotenv
 
-requests==2.32.5
-numpy==1.26.4
+requests
+numpy
 
 # PDF
-pypdf==6.4.0
+pypdf
 
 # Pinecone
-pinecone==7.3.0
-langchain-pinecone==0.2.13
+pinecone
+langchain-pinecone
 
 # LangChain
 langchain-core
@@ -21,19 +21,7 @@ langchain-huggingface
 
 # Hugging Face
 sentence-transformers
-transformers
-huggingface-hub
-torch
 
 # Translation
 googletrans==4.0.0rc1
-deep-translator==1.11.4
-
-# Utilities
-PyYAML
-tqdm
-pydantic
-pydantic-settings
-
-# Database
-SQLAlchemy
+deep-translator
