@@ -10,12 +10,13 @@ pypdf==6.4.0
 
 # Pinecone
 pinecone==7.3.0
+langchain-pinecone==0.2.13
 
 # LangChain
 langchain-core
 langchain-community
 langchain-text-splitters
-langchain-pinecone
+
 langchain-huggingface
 
 # Hugging Face

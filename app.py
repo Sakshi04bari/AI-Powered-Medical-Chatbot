@@ -1,10 +1,9 @@
 import os
 import re
-
+from langchain_pinecone import PineconeVectorStore
+from src.helper import get_embeddings
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
-
-from langchain_pinecone import PineconeVectorStore
 from src.helper import get_embeddings
 from src.lang_utils import detect_user_language, translate_text
 
