@@ -3,8 +3,8 @@ gunicorn
 
 python-dotenv
 
-requests
 numpy
+requests
 
 # PDF
 pypdf
@@ -18,10 +18,13 @@ langchain-core
 langchain-community
 langchain-text-splitters
 langchain-huggingface
-
-# Hugging Face
+langdetect==1.0.9
+# HuggingFace embeddings
 sentence-transformers
 
 # Translation
-googletrans==4.0.0rc1
 deep-translator
+
+# Utilities
+PyYAML
+tqdm
